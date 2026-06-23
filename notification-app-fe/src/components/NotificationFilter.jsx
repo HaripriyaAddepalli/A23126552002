@@ -1,20 +1,42 @@
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import React from "react";
+import { ToggleButton, ToggleButtonGroup, Box, Typography } from "@mui/material";
 
-const filters = ["All", "Placement", "Result", "Event"];
+const TYPES = ["All", "Placement", "Result", "Event"];
 
-export function NotificationFilter({ value, onChange }) {
+const NotificationFilter = ({ value, onChange }) => {
   return (
-    <ToggleButtonGroup
-      value={value}
-      exclusive
-      size="small"
-      sx={{ flexWrap: "wrap", gap: 0.5 }}
-    >
-      {filters.map((type) => (
-        <ToggleButton value={type} sx={{ textTransform: "none", px: 2 }}>
-          {type}
-        </ToggleButton>
-      ))}
-    </ToggleButtonGroup>
+    <Box mb={2}>
+      <Typography variant="body2" color="text.secondary" mb={0.5}>
+        Filter by type
+      </Typography>
+      <ToggleButtonGroup
+        value={value}
+        exclusive
+        onChange={(_, newVal) => newVal !== null && onChange(newVal)}
+        size="small"
+        sx={{ flexWrap: "wrap", gap: 0.5 }}
+      >
+        {TYPES.map((t) => (
+          <ToggleButton
+            key={t}
+            value={t}
+            sx={{
+              borderRadius: "20px !important",
+              px: 2,
+              border: "1px solid !important",
+              "&.Mui-selected": {
+                bgcolor: "primary.main",
+                color: "white",
+                "&:hover": { bgcolor: "primary.dark" },
+              },
+            }}
+          >
+            {t}
+          </ToggleButton>
+        ))}
+      </ToggleButtonGroup>
+    </Box>
   );
-}
+};
+
+export default NotificationFilter;
