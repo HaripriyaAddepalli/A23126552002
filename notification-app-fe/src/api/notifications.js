@@ -2,9 +2,14 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:5000";
 
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJhZGRlcGFsbGloYXJpcHJpeWEuMjMuY3NtQGFuaXRzLmVkdS5pbiIsImV4cCI6MTc4MjE5Mjc3OCwiaWF0IjoxNzgyMTkxODc4LCJpc3MiOiJBZmZvcmQgTWVkaWNhbCBUZWNobm9sb2dpZXMgUHJpdmF0ZSBMaW1pdGVkIiwianRpIjoiYTliOTEzYzYtZjg2Zi00OGM3LTk5MWUtOGY4MjE5N2VmMTRmIiwibG9jYWxlIjoiZW4tSU4iLCJuYW1lIjoiYWRkZXBhbGxpaGFyaXByaXlhIiwic3ViIjoiYmMxMjhhMzctY2Q0OC00MDFlLWEyNzMtOWNmOTMwYjY4MmM2In0sImVtYWlsIjoiYWRkZXBhbGxpaGFyaXByaXlhLjIzLmNzbUBhbml0cy5lZHUuaW4iLCJuYW1lIjoiYWRkZXBhbGxpaGFyaXByaXlhIiwicm9sbE5vIjoiYTEyMzI2NTUyMDAyIiwiYWNjZXNzQ29kZSI6Ik1UcXhhciIsImNsaWVudElEIjoiYmMxMjhhMzctY2Q0OC00MDFlLWEyNzMtOWNmOTMwYjY4MmM2IiwiY2xpZW50U2VjcmV0IjoibWd6dGZIVWNOek5WWmVocyJ9.5N7XKgn0CLxAqxAwRae16gYfJq2fJcBpUIxQ7Uy_B9U";
+
 const axiosClient = axios.create({
   baseURL: BASE_URL,
   timeout: 20000,
+  headers: {
+    Authorization: `Bearer ${ACCESS_TOKEN}`,
+  },
 });
 
 function formatTimestamp(d = new Date()) {
